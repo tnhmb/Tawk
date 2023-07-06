@@ -41,10 +41,10 @@ class HomeViewModel: HomeViewModelProtocol {
                 }
                 // Fetch new data from the backend in the background
                 fetchDataFromBackend(page: self.currentPage)
-                return
+            } else {
+                fetchDataFromBackend(page: page)
             }
         } else {
-            // If there is no data in Core Data, fetch data from the backend
             fetchDataFromBackend(page: page)
         }
     }
