@@ -6,11 +6,16 @@
 //
 
 import SwiftUI
+import Combine
 
 struct ProfileView<ViewModel: ProfileViewModelProtocol>: View {
     @ObservedObject var viewModel: ViewModel
     @State private var notes: String = ""
     @Environment(\.presentationMode) var presentationMode
+    @State private var keyboardHeight: CGFloat = 0 // Track the height of the keyboard
+    @State private var cancellables = Set<AnyCancellable>()
+    @State private var isNavigationBarHidden = false
+    
     var onDismiss: (() -> Void)?
     
     init(viewModel: ViewModel) {
@@ -58,13 +63,37 @@ struct ProfileView<ViewModel: ProfileViewModelProtocol>: View {
             .padding()
             .background(Color(.systemBackground))
             .onAppear {
+                // Subscribe to the keyboardWillShow notification
+                NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)
+                    .compactMap { $0.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect }
+                    .sink { keyboardFrame in
+                        isNavigationBarHidden = true
+                        keyboardHeight = keyboardFrame.height
+                    }
+                    .store(in: &cancellables)
+                
+                // Subscribe to the keyboardWillHide notification
+                NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)
+                    .sink { _ in
+                        isNavigationBarHidden = false
+                        keyboardHeight = 0
+                    }
+                    .store(in: &cancellables)
                 viewModel.startObservingNetworkChanges()
                 viewModel.getData()
             }
             .onDisappear {
                 viewModel.stopObservingNetworkChanges()
                 onDismiss?()
+                cancellables.removeAll()
             }
+            .gesture(
+                // Dismiss the keyboard when tapping outside the text input area
+                TapGesture()
+                    .onEnded { _ in
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                    }
+            )
             .alert(item: $viewModel.onError) { currentAlert in
                 Alert(
                     title: Text("Error"),
@@ -72,10 +101,12 @@ struct ProfileView<ViewModel: ProfileViewModelProtocol>: View {
                     dismissButton: .default(Text("Ok"))
                 )
             }
+            .modifier(KeyboardAwareModifier(offset: keyboardHeight))
         }
         .navigationTitle(viewModel.profileData?.name ?? "")
+        .navigationBarHidden(isNavigationBarHidden)
     }
-
+    
     
     func saveNotes() {
         // Implement your save notes logic here
@@ -94,6 +125,29 @@ struct ProfileView<ViewModel: ProfileViewModelProtocol>: View {
         viewModel.coreDataHelper.updateProfile(withLogin: login, newData: updatedProfile)
         
         presentationMode.wrappedValue.dismiss()
+    }
+}
+
+struct KeyboardAwareModifier: ViewModifier {
+    @State private var keyboardOffset: CGFloat = 0
+    let offset: CGFloat
+    
+    func body(content: Content) -> some View {
+        content
+            .padding(.bottom, keyboardOffset)
+            .animation(.easeOut(duration: 0.25))
+            .onAppear {
+                NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { notification in
+                    let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect)?.size
+                    keyboardOffset = (keyboardSize?.height ?? 0) - (offset + 200)
+                }
+                NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { _ in
+                    keyboardOffset = 0
+                }
+            }
+            .onDisappear {
+                NotificationCenter.default.removeObserver(self)
+            }
     }
 }
 

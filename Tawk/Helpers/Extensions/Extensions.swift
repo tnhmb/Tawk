@@ -62,6 +62,21 @@ extension UIViewController {
         }
     }
     
+    func dismissKeyboardOnTapOutsideBounds() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    func addAsyncDelay(seconds: Double, completion: @escaping (() -> Void)) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+            completion()
+        }
+    }
 }
 extension UIView {
     @discardableResult
@@ -137,5 +152,19 @@ extension UIView {
         superview?.addConstraint(constraint)
         
         return constraint
+    }
+}
+
+extension Array where Element:Equatable {
+    func removeDuplicates() -> [Element] {
+        var result = [Element]()
+        
+        for value in self {
+            if result.contains(value) == false {
+                result.append(value)
+            }
+        }
+        
+        return result
     }
 }

@@ -9,5 +9,5 @@ import Foundation
 import UIKit
 
 protocol HomeCell: UICollectionViewCell {
-    func configure(with viewModel: HomeCellViewModel)
+    func configure(with model: HomeDataModel)
 }

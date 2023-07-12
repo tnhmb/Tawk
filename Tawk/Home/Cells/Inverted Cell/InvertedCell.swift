@@ -28,12 +28,37 @@ class InvertedCell: UICollectionViewCell, HomeCell {
         }
     }
     
-    func configure(with viewModel: HomeCellViewModel) {
-        guard let invertedViewModel = viewModel as? InvertedCellViewModel else {
-            return
-        }
-        
-        // Configure the cell using the provided view model
-        invertedViewModel.configure(cell: self)
+    func configure(with model: HomeDataModel) {
+            invertAvatarImageColor(avatarIv, from: model.avatar)
+            detailsLabel.text = model.details.rawValue
+            nameLabel.text = model.userName
+    }
+    
+    private func invertAvatarImageColor(_ imageView: UIImageView, from url: String) {
+        imageView.loadImage(from: url, completion: { image in
+            guard let image = image else {
+                return
+            }
+            
+            guard let ciImage = CIImage(image: image) else {
+                return
+            }
+            
+            let filter = CIFilter(name: "CIColorInvert")
+            filter?.setValue(ciImage, forKey: kCIInputImageKey)
+            
+            guard let outputCIImage = filter?.outputImage else {
+                return
+            }
+            
+            let context = CIContext(options: nil)
+            
+            guard let outputCGImage = context.createCGImage(outputCIImage, from: outputCIImage.extent) else {
+                return
+            }
+            
+            let invertedImage = UIImage(cgImage: outputCGImage)
+            imageView.image = invertedImage
+        })
     }
 }

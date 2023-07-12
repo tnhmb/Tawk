@@ -22,6 +22,7 @@ class HomeView: UIView {
             collectionView.register(UINib(nibName: "NormalCell", bundle: nil), forCellWithReuseIdentifier: "NormalCell")
             collectionView.register(UINib(nibName: "NoteCell", bundle: nil), forCellWithReuseIdentifier: "NoteCell")
             collectionView.register(UINib(nibName: "InvertedCell", bundle: nil), forCellWithReuseIdentifier: "InvertedCell")
+            collectionView.register(UINib(nibName: "SpinnerCell", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "SpinnerCell")
         }
     }
     override init(frame: CGRect) {

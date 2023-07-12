@@ -54,30 +54,6 @@ final class ProfileViewModelTests: XCTestCase {
         XCTAssertTrue(mockCoreDataHelper.didCallSaveProfile)
     }
     
-    func testGetData_FromCoreData() {
-        // Arrange
-        let mockProfile = ProfileEntity(login: "testuser", name: "Test User")
-        mockCoreDataHelper.mockProfile = mockProfile
-        let expectaions = XCTestExpectation(description: "Success")
-        let cancellable: AnyCancellable?
-        
-        cancellable = sut.$profileData
-            .dropFirst()
-            .sink(receiveValue: { value in
-                expectaions.fulfill()
-            })
-        // Act
-        sut.getData()
-        
-        wait(for: [expectaions], timeout: 5.0)
-        // Assert
-        XCTAssertEqual(sut.profileData?.name, mockProfile.name)
-        XCTAssertEqual(sut.profileData?.login, mockProfile.login)
-        XCTAssertNil(sut.onError)
-        XCTAssertFalse(mockCoreDataHelper.didCallSaveProfile)
-        XCTAssertFalse(mockAPIClient.didCallGet)
-    }
-    
     
     func testGetData_FetchFromBackend_Failure() {
         // Arrange

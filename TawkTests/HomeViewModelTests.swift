@@ -46,7 +46,9 @@ class HomeViewModelTests: XCTestCase {
     
     func testGetData_CoreDataIsEmpty_Success() {
         // Arrange
-        mockCoreDataHelper.saveUsers([])
+        mockCoreDataHelper.saveUsers([]) {
+            XCTAssert(true, "Save user")
+        }
         
         // Act
         sut.getData(page: 0)

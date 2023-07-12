@@ -24,9 +24,10 @@ class MockCoreDataHelper: CoreDataHelper {
         return mockUsers
     }
     
-    override func saveUsers(_ users: [UserEntityElement]) {
+    override func saveUsers(_ users: [UserEntityElement], completion: (() -> Void)?) {
         self.mockUsers = users
         didCallSaveUsers = true
+        completion?()
     }
     
     override func getProfile(withLogin: String) -> ProfileMO? {

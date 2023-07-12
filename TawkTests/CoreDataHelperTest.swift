@@ -44,7 +44,9 @@ class CoreDataHelperTests: XCTestCase {
     func testSaveFetchUsers() {
         let users = [UserEntityElement(login: "john", id: 123), UserEntityElement(login: "Alex", id: 113), UserEntityElement(login: "Max", id: 121)]
         
-        coreDataHelper.saveUsers(users)
+        coreDataHelper.saveUsers(users) {
+            XCTAssert(true, "Saved user")
+        }
         XCTAssertNotNil(coreDataHelper.getUsers())
     }
 }

@@ -32,7 +32,7 @@ class CoreDataHelper: NSObject {
         
         let fetchRequest: NSFetchRequest<UserMO> = UserMO.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
-
+        
         do {
             let userMOs = try managedContext.fetch(fetchRequest)
             users = userMOs.compactMap { UserEntityElement(user: $0) }
@@ -42,7 +42,7 @@ class CoreDataHelper: NSObject {
         return users
     }
     
-    func saveUsers(_ users: [UserEntityElement]) {
+    func saveUsers(_ users: [UserEntityElement], completion: (() -> Void)?) {
         let writeContext = self.writeContext
         
         let fetchRequest: NSFetchRequest<UserMO> = UserMO.fetchRequest()
@@ -62,10 +62,10 @@ class CoreDataHelper: NSObject {
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
-        
         coreDataStack.saveWriteContext()
+        completion?()
     }
-
+    
     func getUser(withLogin login: String) -> UserMO? {
         let fetchRequest: NSFetchRequest<UserMO> = UserMO.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "login == %@", login)
@@ -85,7 +85,6 @@ class CoreDataHelper: NSObject {
         let writeContext = self.writeContext
         
         let fetchRequest: NSFetchRequest<UserMO> = UserMO.fetchRequest()
-        
         do {
             let data = try writeContext.fetch(fetchRequest)
             if data.isEmpty {
@@ -100,6 +99,7 @@ class CoreDataHelper: NSObject {
         }
         
         coreDataStack.saveWriteContext()
+        
     }
     
     func saveProfile(_ profile: ProfileEntity) {
@@ -144,6 +144,7 @@ class CoreDataHelper: NSObject {
         }
         
         coreDataStack.saveWriteContext()
+        
     }
     
     func updateProfile(withLogin login: String, newData: ProfileEntity) {
@@ -151,6 +152,7 @@ class CoreDataHelper: NSObject {
         
         let fetchRequest: NSFetchRequest<ProfileMO> = ProfileMO.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "login == %@", login)
+        
         
         do {
             let existingProfiles = try writeContext.fetch(fetchRequest)
@@ -162,7 +164,7 @@ class CoreDataHelper: NSObject {
             print("Could not update profile. \(error), \(error.userInfo)")
         }
         
-        coreDataStack.saveWriteContext()
+        
     }
     
     
