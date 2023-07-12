@@ -28,12 +28,10 @@ class NormalCell: UICollectionViewCell, HomeCell {
         }
     }
     
-    func configure(with viewModel: HomeCellViewModel) {
-        guard let normalCellViewModel = viewModel as? NormalCellViewModel else {
-            return
-        }
-        
-        normalCellViewModel.configure(cell: self)
+    func configure(with model: HomeDataModel) {
+        nameLabel.text = model.userName
+        avatarIv.loadImage(from: model.avatar)
+        detailsLabel.text = model.details.rawValue
     }
     
     override func prepareForReuse() {

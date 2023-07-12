@@ -29,12 +29,11 @@ class NoteCell: UICollectionViewCell, HomeCell {
         }
     }
     
-    func configure(with viewModel: HomeCellViewModel) {
-        guard let noteCellViewModel = viewModel as? NoteCellViewModel else {
-            return
-        }
-        
-        noteCellViewModel.configure(cell: self)
+    func configure(with model: HomeDataModel) {
+            noteIv.isHidden = false
+            nameLabel.text = model.userName
+            avatarIv.loadImage(from: model.avatar)
+            detailsLabel.text = model.details.rawValue
     }
     
     override func prepareForReuse() {

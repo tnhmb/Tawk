@@ -10,16 +10,11 @@
 		B8077D302A2EC731007AB722 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8077D2F2A2EC731007AB722 /* HomeCell.swift */; };
 		B8077D322A2EC77F007AB722 /* HomeDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8077D312A2EC77F007AB722 /* HomeDataModel.swift */; };
 		B8077D342A2ECB32007AB722 /* HomeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8077D332A2ECB32007AB722 /* HomeCellViewModel.swift */; };
-		B8077D382A2ED646007AB722 /* NormalDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8077D372A2ED646007AB722 /* NormalDataModel.swift */; };
 		B81028B92A2EED5F00991AD2 /* NormalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B81028B82A2EED5F00991AD2 /* NormalCell.xib */; };
 		B81028BB2A2F172C00991AD2 /* InvertedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81028BA2A2F172C00991AD2 /* InvertedCell.swift */; };
 		B81028BD2A2F173400991AD2 /* InvertedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B81028BC2A2F173400991AD2 /* InvertedCell.xib */; };
-		B81028BF2A2F174100991AD2 /* InvertedCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81028BE2A2F174100991AD2 /* InvertedCellViewModel.swift */; };
-		B81028C12A2F174D00991AD2 /* InvertedDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81028C02A2F174D00991AD2 /* InvertedDataModel.swift */; };
 		B81028C32A300FEA00991AD2 /* NoteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B81028C22A300FEA00991AD2 /* NoteCell.xib */; };
 		B81028C52A300FFB00991AD2 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81028C42A300FFB00991AD2 /* NoteCell.swift */; };
-		B81028C72A30100B00991AD2 /* NoteCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81028C62A30100B00991AD2 /* NoteCellViewModel.swift */; };
-		B81028C92A30101B00991AD2 /* NoteDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81028C82A30101B00991AD2 /* NoteDataModel.swift */; };
 		B81028CC2A30134200991AD2 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81028CB2A30134200991AD2 /* ProfileView.swift */; };
 		B81028CE2A30199400991AD2 /* ProfileViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81028CD2A30199400991AD2 /* ProfileViewModelProtocol.swift */; };
 		B81028D02A3019D700991AD2 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81028CF2A3019D700991AD2 /* ProfileViewModel.swift */; };
@@ -44,7 +39,6 @@
 		B844C95C2A258FD800F296DA /* HomeViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B844C95B2A258FD800F296DA /* HomeViewModelProtocol.swift */; };
 		B844C95E2A258FE300F296DA /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B844C95D2A258FE300F296DA /* HomeViewModel.swift */; };
 		B844C9622A2590C000F296DA /* NormalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B844C9612A2590C000F296DA /* NormalCell.swift */; };
-		B844C96A2A25910800F296DA /* NormalCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B844C9692A25910800F296DA /* NormalCellViewModel.swift */; };
 		B844C96F2A25921800F296DA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B844C96E2A25921800F296DA /* Extensions.swift */; };
 		B844C9732A25946900F296DA /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B844C9722A25946900F296DA /* UserEntity.swift */; };
 		B844C9772A25A3CB00F296DA /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B844C9762A25A3CB00F296DA /* CoreDataHelper.swift */; };
@@ -55,6 +49,9 @@
 		B844C9822A25ACD100F296DA /* URLSessionAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B844C9812A25ACD100F296DA /* URLSessionAPIClient.swift */; };
 		B844C9842A25B1F300F296DA /* FetchAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B844C9832A25B1F300F296DA /* FetchAPIProtocol.swift */; };
 		B844C9872A25C17E00F296DA /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = B844C9862A25C17E00F296DA /* Enums.swift */; };
+		B8A4D8A22A5E692400F11520 /* CustomEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A4D8A12A5E692400F11520 /* CustomEntity.swift */; };
+		B8A4D8A82A5E7FBC00F11520 /* SpinnerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A4D8A72A5E7FBC00F11520 /* SpinnerCell.swift */; };
+		B8A4D8AA2A5E8B7D00F11520 /* SpinnerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8A4D8A92A5E8B7D00F11520 /* SpinnerCell.xib */; };
 		B8E666822A34470A000173C8 /* CoreDataHelperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E666812A34470A000173C8 /* CoreDataHelperTest.swift */; };
 /* End PBXBuildFile section */
 
@@ -79,16 +76,11 @@
 		B8077D2F2A2EC731007AB722 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 		B8077D312A2EC77F007AB722 /* HomeDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataModel.swift; sourceTree = "<group>"; };
 		B8077D332A2ECB32007AB722 /* HomeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCellViewModel.swift; sourceTree = "<group>"; };
-		B8077D372A2ED646007AB722 /* NormalDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalDataModel.swift; sourceTree = "<group>"; };
 		B81028B82A2EED5F00991AD2 /* NormalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NormalCell.xib; sourceTree = "<group>"; };
 		B81028BA2A2F172C00991AD2 /* InvertedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvertedCell.swift; sourceTree = "<group>"; };
 		B81028BC2A2F173400991AD2 /* InvertedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvertedCell.xib; sourceTree = "<group>"; };
-		B81028BE2A2F174100991AD2 /* InvertedCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvertedCellViewModel.swift; sourceTree = "<group>"; };
-		B81028C02A2F174D00991AD2 /* InvertedDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvertedDataModel.swift; sourceTree = "<group>"; };
 		B81028C22A300FEA00991AD2 /* NoteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteCell.xib; sourceTree = "<group>"; };
 		B81028C42A300FFB00991AD2 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
-		B81028C62A30100B00991AD2 /* NoteCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCellViewModel.swift; sourceTree = "<group>"; };
-		B81028C82A30101B00991AD2 /* NoteDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDataModel.swift; sourceTree = "<group>"; };
 		B81028CB2A30134200991AD2 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		B81028CD2A30199400991AD2 /* ProfileViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModelProtocol.swift; sourceTree = "<group>"; };
 		B81028CF2A3019D700991AD2 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
@@ -117,7 +109,6 @@
 		B844C95B2A258FD800F296DA /* HomeViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelProtocol.swift; sourceTree = "<group>"; };
 		B844C95D2A258FE300F296DA /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		B844C9612A2590C000F296DA /* NormalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalCell.swift; sourceTree = "<group>"; };
-		B844C9692A25910800F296DA /* NormalCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalCellViewModel.swift; sourceTree = "<group>"; };
 		B844C96E2A25921800F296DA /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B844C9722A25946900F296DA /* UserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
 		B844C9762A25A3CB00F296DA /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
@@ -128,6 +119,9 @@
 		B844C9812A25ACD100F296DA /* URLSessionAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionAPIClient.swift; sourceTree = "<group>"; };
 		B844C9832A25B1F300F296DA /* FetchAPIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAPIProtocol.swift; sourceTree = "<group>"; };
 		B844C9862A25C17E00F296DA /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		B8A4D8A12A5E692400F11520 /* CustomEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomEntity.swift; sourceTree = "<group>"; };
+		B8A4D8A72A5E7FBC00F11520 /* SpinnerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerCell.swift; sourceTree = "<group>"; };
+		B8A4D8A92A5E8B7D00F11520 /* SpinnerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpinnerCell.xib; sourceTree = "<group>"; };
 		B8E666812A34470A000173C8 /* CoreDataHelperTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelperTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -261,6 +255,7 @@
 		B844C95F2A258FF600F296DA /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				B8A4D8A62A5E7FA100F11520 /* Spinner Cell */,
 				B8077D2E2A2EC71F007AB722 /* Home Cell */,
 				B844C96C2A25911700F296DA /* Note Cell */,
 				B844C96B2A25910C00F296DA /* Inverted Cell */,
@@ -273,8 +268,6 @@
 			isa = PBXGroup;
 			children = (
 				B844C9612A2590C000F296DA /* NormalCell.swift */,
-				B844C9692A25910800F296DA /* NormalCellViewModel.swift */,
-				B8077D372A2ED646007AB722 /* NormalDataModel.swift */,
 				B81028B82A2EED5F00991AD2 /* NormalCell.xib */,
 			);
 			path = "Normal Cell";
@@ -285,8 +278,6 @@
 			children = (
 				B81028BA2A2F172C00991AD2 /* InvertedCell.swift */,
 				B81028BC2A2F173400991AD2 /* InvertedCell.xib */,
-				B81028BE2A2F174100991AD2 /* InvertedCellViewModel.swift */,
-				B81028C02A2F174D00991AD2 /* InvertedDataModel.swift */,
 			);
 			path = "Inverted Cell";
 			sourceTree = "<group>";
@@ -296,8 +287,6 @@
 			children = (
 				B81028C22A300FEA00991AD2 /* NoteCell.xib */,
 				B81028C42A300FFB00991AD2 /* NoteCell.swift */,
-				B81028C62A30100B00991AD2 /* NoteCellViewModel.swift */,
-				B81028C82A30101B00991AD2 /* NoteDataModel.swift */,
 			);
 			path = "Note Cell";
 			sourceTree = "<group>";
@@ -327,6 +316,7 @@
 				B844C9722A25946900F296DA /* UserEntity.swift */,
 				B844C9782A25A3F600F296DA /* ErrorEntity.swift */,
 				B81028D12A3019ED00991AD2 /* ProfileEntity.swift */,
+				B8A4D8A12A5E692400F11520 /* CustomEntity.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -357,6 +347,15 @@
 				B844C9862A25C17E00F296DA /* Enums.swift */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		B8A4D8A62A5E7FA100F11520 /* Spinner Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B8A4D8A72A5E7FBC00F11520 /* SpinnerCell.swift */,
+				B8A4D8A92A5E8B7D00F11520 /* SpinnerCell.xib */,
+			);
+			path = "Spinner Cell";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -469,6 +468,7 @@
 				B81028BD2A2F173400991AD2 /* InvertedCell.xib in Resources */,
 				B844C9582A258FB500F296DA /* HomeView.xib in Resources */,
 				B81028C32A300FEA00991AD2 /* NoteCell.xib in Resources */,
+				B8A4D8AA2A5E8B7D00F11520 /* SpinnerCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,23 +493,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B81028C12A2F174D00991AD2 /* InvertedDataModel.swift in Sources */,
 				B81028D52A302E7900991AD2 /* RemoteImage.swift in Sources */,
 				B844C9822A25ACD100F296DA /* URLSessionAPIClient.swift in Sources */,
-				B844C96A2A25910800F296DA /* NormalCellViewModel.swift in Sources */,
 				B844C97E2A25AC4E00F296DA /* APIClient.swift in Sources */,
 				B81028CE2A30199400991AD2 /* ProfileViewModelProtocol.swift in Sources */,
 				B8077D322A2EC77F007AB722 /* HomeDataModel.swift in Sources */,
-				B8077D382A2ED646007AB722 /* NormalDataModel.swift in Sources */,
 				B844C9872A25C17E00F296DA /* Enums.swift in Sources */,
-				B81028C92A30101B00991AD2 /* NoteDataModel.swift in Sources */,
 				B844C95A2A258FC800F296DA /* HomeViewController.swift in Sources */,
 				B8077D302A2EC731007AB722 /* HomeCell.swift in Sources */,
 				B844C92C2A258E6100F296DA /* Tawk.xcdatamodeld in Sources */,
 				B844C95E2A258FE300F296DA /* HomeViewModel.swift in Sources */,
 				B844C9562A258FAB00F296DA /* HomeView.swift in Sources */,
+				B8A4D8A82A5E7FBC00F11520 /* SpinnerCell.swift in Sources */,
 				B81028D02A3019D700991AD2 /* ProfileViewModel.swift in Sources */,
-				B81028C72A30100B00991AD2 /* NoteCellViewModel.swift in Sources */,
 				B844C9802A25AC7B00F296DA /* APIRepository.swift in Sources */,
 				B844C97B2A25A54100F296DA /* CoreDataStack.swift in Sources */,
 				B844C9842A25B1F300F296DA /* FetchAPIProtocol.swift in Sources */,
@@ -517,7 +513,7 @@
 				B81028D22A3019ED00991AD2 /* ProfileEntity.swift in Sources */,
 				B8077D342A2ECB32007AB722 /* HomeCellViewModel.swift in Sources */,
 				B844C96F2A25921800F296DA /* Extensions.swift in Sources */,
-				B81028BF2A2F174100991AD2 /* InvertedCellViewModel.swift in Sources */,
+				B8A4D8A22A5E692400F11520 /* CustomEntity.swift in Sources */,
 				B844C9732A25946900F296DA /* UserEntity.swift in Sources */,
 				B81028CC2A30134200991AD2 /* ProfileView.swift in Sources */,
 				B844C9622A2590C000F296DA /* NormalCell.swift in Sources */,

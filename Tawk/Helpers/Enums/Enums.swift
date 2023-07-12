@@ -35,3 +35,8 @@ enum CoreDataUsersResult {
 }
 
 
+enum CellType: String {
+    case note = "NoteCell"
+    case normal = "NormalCell"
+    case inverted = "InvertedCell"
+}

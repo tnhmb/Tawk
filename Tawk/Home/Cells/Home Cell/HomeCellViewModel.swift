@@ -7,5 +7,5 @@
 
 import Foundation
 protocol HomeCellViewModel {
-    func configure(cell: HomeCell)
+    //func configure(cell: HomeDataModel)
 }

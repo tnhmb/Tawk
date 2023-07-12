@@ -11,11 +11,13 @@ import SwiftUI
 
 class HomeViewController: UIViewController {
     var layoutView: HomeView { return view as! HomeView }
-    var viewModel: HomeViewModel!
+    var viewModel: HomeViewModelProtocol!
+    private var spinnerCell: SpinnerCell?
     
     override func loadView() {
         view = HomeView()
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,12 +39,15 @@ class HomeViewController: UIViewController {
     }
     
     private func fetchData() {
-        viewModel.getData(page: 0)
+        self.spinnerCell?.startAnimating()
+        self.viewModel.getData(page: 0)
     }
     
     func setupBinding() {
+        self.dismissKeyboardOnTapOutsideBounds()
         viewModel.onError = { [weak self] error in
             // Show error message on fail
+            self?.spinnerCell?.stopAnimating()
             self?.showErrorMessage(error.errorMessage, completion: nil)
         }
         
@@ -55,9 +60,11 @@ class HomeViewController: UIViewController {
     private func updateUI() {
         // Populate filteredUserList with initial data
         viewModel.filteredUserList = viewModel.userList
+
         // Update your UI to reflect the fetched data
-        DispatchQueue.main.async {
-            self.layoutView.collectionView.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            self?.layoutView.collectionView.reloadData()
+            self?.spinnerCell?.stopAnimating()
         }
         
     }
@@ -74,27 +81,11 @@ extension HomeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let data = viewModel.filteredUserList[indexPath.item]
+        let model = HomeDataModel(user: data, index: indexPath.item)
+        let identifier = model.cellType.rawValue
         let cell: HomeCell
-        if indexPath.item % 4 == 3 {
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InvertedCell", for: indexPath) as! InvertedCell
-            let invertedDataModl = InvertedDataModel(user: data)
-            let invertedCellViewModel = InvertedCellViewModel(dataModel: invertedDataModl)
-            
-            cell.configure(with: invertedCellViewModel)
-        } else if data.hasNote() {
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NoteCell", for: indexPath) as! NoteCell
-            let noteDataModel = NoteDataModel(user: data)
-            let noteCellViewModel = NoteCellViewModel(dataModel: noteDataModel)
-            
-            cell.configure(with: noteCellViewModel)
-        } else {
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NormalCell", for: indexPath) as! NormalCell
-            let normalDataModel = NormalDataModel(user: data)
-            let normalCellViewModel = NormalCellViewModel(dataModel: normalDataModel)
-            
-            cell.configure(with: normalCellViewModel)
-            
-        }
+        cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! HomeCell
+        cell.configure(with: model)
         
         return cell
     }
@@ -118,11 +109,29 @@ extension HomeViewController: UICollectionViewDataSource {
         }
         
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionFooter {
+            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SpinnerCell", for: indexPath) as! SpinnerCell
+            spinnerCell = footerView
+            spinnerCell?.startAnimating()
+            return footerView
+        }
+                
+        return UICollectionReusableView()
+    }
+
+
 }
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.bounds.width, height: 100)
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.bounds.width, height: 30)
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -131,10 +140,12 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         if indexPath.item == lastItem {
             // User is about to reach the end of the collection view, load more data
             let nextPage = viewModel.currentPage
+            self.spinnerCell?.startAnimating()
             viewModel.getData(page: nextPage)
         }
     }
 }
+
 extension HomeViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         viewModel.filteredUserList = searchText.isEmpty ? viewModel.userList : viewModel.userList.filter { user in

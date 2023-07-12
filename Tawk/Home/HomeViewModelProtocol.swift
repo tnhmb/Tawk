@@ -9,7 +9,7 @@ import Foundation
 
 protocol HomeViewModelProtocol: FetchAPIProtocol {
     var userList: [UserEntityElement] { get }
-    var filteredUserList: [UserEntityElement] { get }
+    var filteredUserList: [UserEntityElement] { set get }
     var coreDataHelper: CoreDataHelper { get set }
     var errorMessage: String? { get set }
     var currentPage: Int { get set }

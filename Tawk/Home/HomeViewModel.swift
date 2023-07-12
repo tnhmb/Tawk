@@ -17,7 +17,6 @@ class HomeViewModel: HomeViewModelProtocol {
     private var isObservingNetwork = false
     var errorMessage: String?
     var currentPage: Int = 0
-    private var isFetchingData: Bool = false
     
     private var dataUpdateTimer: Timer?
     private let updateInterval: TimeInterval = 60 * 30
@@ -60,20 +59,21 @@ class HomeViewModel: HomeViewModelProtocol {
         }
         
         // Set isFetchingData to true to prevent multiple simultaneous API calls
-        isFetchingData = true
+        
         
         apiClient.get(url: url) { [weak self] (result: Result<[UserEntityElement], ErrorEntity>) in
             // Set isFetchingData to false after the API call is completed
-            defer {
-                self?.isFetchingData = false
-            }
-            
             switch result {
             case .success(let users):
                 self?.userList += users
-                self?.coreDataHelper.saveUsers(users)
                 self?.currentPage = users.last?.id ?? 0
-                self?.onFetchSuccess?()
+                self?.coreDataHelper.saveUsers(users) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                        self?.onFetchSuccess?()
+
+                    })
+                }
+               
             case .failure(let error):
                 self?.errorMessage = error.errorMessage
                 self?.onError?(error)
